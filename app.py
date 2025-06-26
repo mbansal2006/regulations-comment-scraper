@@ -9,28 +9,22 @@ st.set_page_config(page_title="Regulations.gov Comment Scraper", layout="centere
 
 st.title("Regulations.gov Comment PDF Downloader")
 
-# Step 1: Input Docket Info
-with st.form("docket_form"):
-    docket_number = st.text_input("Enter docket number (e.g. CMS-2025-0050)")
-    email = st.text_input("Enter your email address (where regulations.gov will send the CSV download link)")
-    submitted = st.form_submit_button("Submit Bulk CSV Request")
+# Step 1: Instructions to Request CSV
+st.header("Step 1: Request Bulk CSV")
+st.markdown("""
+Go to [**Regulations.gov Bulk Download Page**](https://www.regulations.gov/downloads) and request the comment data for your docket.
 
-    if submitted:
-        form_data = {
-            "docketId": docket_number,
-            "email": email,
-            "format": "csv"
-        }
-        r = requests.post("https://www.regulations.gov/bulkdownload", data=form_data)
-        if r.status_code == 200:
-            st.success(f"Request submitted for {docket_number}. CSV will be sent to {email}.")
-        else:
-            st.error(f"Failed to submit request. Status code: {r.status_code}")
+1. Enter the **Docket ID** (e.g., `CMS-2025-0050`)
+2. Enter your **email address**
+3. Submit the form — you will receive a CSV by email
+
+Once you have the file, upload it below.
+""")
 
 st.divider()
 
 # Step 2: Upload CSV
-st.header("Upload Bulk CSV from Email")
+st.header("Step 2: Upload Bulk CSV from Email")
 uploaded_csv = st.file_uploader("Upload the CSV file sent to your email", type=["csv"])
 
 if uploaded_csv:
