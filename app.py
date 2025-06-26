@@ -12,9 +12,9 @@ st.title("Regulations.gov Comment PDF Downloader")
 # Step 1: Instructions to Request CSV
 st.header("Step 1: Request Bulk CSV")
 st.markdown("""
-Go to [**Regulations.gov Bulk Download Page**](https://www.regulations.gov/downloads) and request the comment data for your docket.
+Go to [**Regulations.gov Bulk Download Page**](https://www.regulations.gov/bulkdownload) and request the comment data for your docket.
 
-1. Enter the **Docket ID** (e.g., `CMS-2025-0050`)
+1. Enter the **Docket ID** (e.g., `CMS-2025-0050`). This can be found at the top of the Docket Details page on the comment docket you are on.
 2. Enter your **email address**
 3. Submit the form — you will receive a CSV by email
 
